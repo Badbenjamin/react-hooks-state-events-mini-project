@@ -22,24 +22,29 @@ function App() {
   }
 
   function handleClick(category) {
-    const selectedCategory = category
-    setIsSelected(selectedCategory)
+    // const selectedCategory = category
+    setIsSelected(category)
 
     setFilterSelection(category)
   }
 
+
+  // TRY TO GET FORM TO ONLY SUBMIT WHEN FILLED OUT
   function onTaskFormSubmit(formData){
-    setMyTasks([...myTasks, formData])
+    console.log(formData.text)
+   
+      setMyTasks([...myTasks, formData])
+    
   }
 
 
   const filteredTasks = myTasks.filter(tasks => {
     // console.log("TC", tasks.category)
-    console.log("FS", filterSelection)
+    // console.log("FS", filterSelection)
     if (filterSelection === "All") {
       return tasks
     } else {
-      return tasks.category === filterSelection
+      return tasks.category === isSelected
     }
 
   })

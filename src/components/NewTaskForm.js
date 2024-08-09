@@ -3,7 +3,7 @@ import {React, useState} from "react";
 function NewTaskForm({categories, onTaskFormSubmit}) {
   const [formData, setFormData] = useState({
     text: "",
-    category: ""
+    category: "code"
   })
   
   // console.log(formData)
@@ -12,21 +12,23 @@ function NewTaskForm({categories, onTaskFormSubmit}) {
     // console.log(event.target.name)
     // console.log(event.target.value)
     // const newFormData = {[event.target.name]: event.target.value}
+  
     setFormData({...formData, [event.target.name]: event.target.value})
     
   }
 
-  console.log(formData)
+  // console.log(formData)
 
   const categoryList = categories.map(category => {
     if (category !== "All" ) {
       return <option key={category}>{category}</option>
-    }
+    } 
 })
 
 function handleSubmit(e){
   e.preventDefault();
-  onTaskFormSubmit(formData)
+   onTaskFormSubmit(formData)
+  
 }
   
 // console.log(formData.category)
