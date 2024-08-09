@@ -44,7 +44,7 @@ function App() {
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter isSelected={isSelected} categories={CATEGORIES} onClick={handleClick} />
-      <NewTaskForm />
+      <NewTaskForm categories={CATEGORIES} />
       <TaskList tasks={filteredTasks} deleteTask={deleteTask} />
     </div>
   );
