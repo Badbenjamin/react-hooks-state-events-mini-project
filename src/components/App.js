@@ -10,8 +10,8 @@ import { CATEGORIES, TASKS } from "../data";
 
 function App() {
   const [myTasks, setMyTasks] = useState(TASKS)
-  const [filterSelection, setFilterSelection] = useState("")
-  const [isSelected, setIsSelected] = useState("")
+  const [filterSelection, setFilterSelection] = useState("All")
+  const [isSelected, setIsSelected] = useState("All")
 
   function deleteTask(text) {
 
