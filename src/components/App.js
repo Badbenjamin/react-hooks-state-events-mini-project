@@ -10,7 +10,7 @@ import { CATEGORIES, TASKS } from "../data";
 
 function App() {
   const [myTasks, setMyTasks] = useState(TASKS)
-  // const [filterState, setFilterState] = useState("")
+  const [filterSelection, setFilterSelection] = useState("")
   const [isSelected, setIsSelected] = useState("")
 
   function deleteTask(text) {
@@ -25,15 +25,27 @@ function App() {
     const selectedCategory = category
     setIsSelected(selectedCategory)
 
+    setFilterSelection(category)
   }
 
+
+  const filteredTasks = myTasks.filter(tasks => {
+    // console.log("TC", tasks.category)
+    console.log("FS", filterSelection)
+    if (filterSelection === "All") {
+      return tasks
+    } else {
+      return tasks.category === filterSelection
+    }
+
+  })
 
   return (
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter isSelected={isSelected} categories={CATEGORIES} onClick={handleClick} />
       <NewTaskForm />
-      <TaskList tasks={myTasks} deleteTask={deleteTask} />
+      <TaskList tasks={filteredTasks} deleteTask={deleteTask} />
     </div>
   );
 }
