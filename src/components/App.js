@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import { CATEGORIES, TASKS } from "../data";
 // console.log("Here's the data you're working with");
-// console.log({ CATEGORIES, TASKS });
+console.log({ CATEGORIES, TASKS });
 
 function App() {
   const [myTasks, setMyTasks] = useState(TASKS)
@@ -28,6 +28,10 @@ function App() {
     setFilterSelection(category)
   }
 
+  function onTaskFormSubmit(formData){
+    setMyTasks([...myTasks, formData])
+  }
+
 
   const filteredTasks = myTasks.filter(tasks => {
     // console.log("TC", tasks.category)
@@ -44,7 +48,7 @@ function App() {
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter isSelected={isSelected} categories={CATEGORIES} onClick={handleClick} />
-      <NewTaskForm categories={CATEGORIES} />
+      <NewTaskForm onTaskFormSubmit={onTaskFormSubmit} categories={CATEGORIES} />
       <TaskList tasks={filteredTasks} deleteTask={deleteTask} />
     </div>
   );
