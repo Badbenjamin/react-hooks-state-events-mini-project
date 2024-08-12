@@ -31,9 +31,17 @@ function App() {
 
   // TRY TO GET FORM TO ONLY SUBMIT WHEN FILLED OUT
   function onTaskFormSubmit(formData){
-    console.log(formData.text)
-   
-      setMyTasks([...myTasks, formData])
+    console.log(myTasks)
+    const existingTasks = myTasks.map((task) => {
+      return task.text
+    })
+      if ((formData.text !== "") && (!existingTasks.find(task =>  formData.text === task))) {
+        // console.log(existingTask.text)
+        setMyTasks([...myTasks, formData])
+      } else {
+        alert("please enter a unique task")
+      }
+      
     
   }
 
